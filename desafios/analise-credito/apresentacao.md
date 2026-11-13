@@ -68,8 +68,9 @@
 - Limiar não calibrado por custo de negócio.
 - Associação não implica causalidade.
 
-## Slide 10 — Recomendação
+## Slide 10 — Próximos Passos e Recomendações
 
 - Usar o modelo como apoio, não decisão automática.
 - Definir custos de falso positivo e falso negativo.
 - Validar temporalmente, monitorar drift e avaliar fairness antes de produção.
+- Evolução Técnica: Um modelo Challenger (LightGBM com calibração de limiar) já foi testado na esteira. Ele está pronto para ser escalado caso a diretoria priorize o aumento na captura de fraudes/inadimplentes (Recall) sobre a explicabilidade direta da Regressão Logística.

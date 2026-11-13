@@ -1,4 +1,7 @@
 # Solução — Análise de Crédito
+![Python](https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![LightGBM](https://img.shields.io/badge/LightGBM-000000?style=for-the-badge)
 
 ## Objetivo
 
@@ -88,6 +91,13 @@ A seleção é feita pela PR-AUC média em validação cruzada estratificada de 
 
 O modelo selecionado pela PR-AUC média na validação cruzada foi o **M3**, com PR-AUC média de 0,654 e ROC-AUC média de 0,777. No teste, ele alcançou PR-AUC de 0,648 e ROC-AUC de 0,771.
 Em termos práticos, um recall de 0,449 significa que o modelo M3 captura quase metade dos reais inadimplentes. Uma precisão de 0,658 indica que, de todas as propostas alertadas como risco, o modelo acerta em cerca de 66% das vezes, reduzindo o risco de bloquear excessivamente bons pagadores. A decisão final ainda deve considerar o custo financeiro de falsos positivos e falsos negativos.
+## Abordagem Champion vs. Challenger
+
+Para refletir cenários reais da indústria de crédito, este projeto adota uma abordagem de dois modelos:
+
+**Modelo Interpretável (Regressão Logística - M3):** O foco principal do projeto. Escolhido por permitir a extração de Odds Ratios, atendendo a rigorosos requisitos regulatórios e de governança (garantindo a explicabilidade nas recusas de crédito).
+
+**Modelo de Alta Performance (LightGBM + Threshold Tuning):** Apresentado no final do notebook como modelo Challenger (prova de conceito). Utiliza imputação avançada (KNNImputer) e otimização de limiar para lidar com o desbalanceamento. Este modelo sacrifica a explicabilidade linear direta em troca da maximização da métrica PR-AUC e do Recall (captura de inadimplentes).
 
 ## Interpretação
 
