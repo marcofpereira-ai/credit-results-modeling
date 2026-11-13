@@ -29,6 +29,8 @@
 - Criação de `razao_emprestimo_renda`.
 
 ## Slide 5 — Evidências exploratórias
+![Taxa de Inadimplência por Score de Crédito](imagens/taxa_inadimplencia_score.png)
+
 
 - Inadimplência no quartil inferior de score: 54,4%; no superior: 16,5%.
 - Quartil inferior de renda: 50,8%; superior: 22,0%.
@@ -43,6 +45,8 @@
 - Seleção pela PR-AUC média em validação cruzada.
 
 ## Slide 7 — Resultados
+![Matriz de Confusão do Modelo M3](imagens/matriz_confusao_m3.png)
+
 
 - Baseline: ROC-AUC 0,500 e PR-AUC 0,344.
 - M3 selecionado: ROC-AUC 0,771 e PR-AUC 0,648 no teste.
@@ -50,6 +54,8 @@
 - Precisão: 0,658.
 
 ## Slide 8 — Interpretação
+![Impacto das Variáveis (Odds Ratio)](imagens/odds_ratio_features.png)
+
 
 - Maior razão empréstimo/renda e mais dívidas elevam a chance estimada.
 - Maior score, renda e tempo de emprego reduzem a chance estimada.

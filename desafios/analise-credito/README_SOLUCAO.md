@@ -20,6 +20,25 @@ Os dados são sintéticos e educacionais. O modelo não deve ser usado em decis�
 Na pasta `desafios/analise-credito`:
 
 ```bash
+python -m venv venv
+```
+
+Ativação do ambiente virtual:
+
+```bash
+# Windows (PowerShell)
+venv\Scripts\Activate.ps1
+
+# Windows (Prompt de Comando)
+venv\Scripts\activate.bat
+
+# Linux/macOS
+source venv/bin/activate
+```
+
+Instalação e execução:
+
+```bash
 python -m pip install -r requirements.txt
 python tratamento_dados.py
 jupyter notebook analise_credito.ipynb
@@ -45,6 +64,9 @@ A variável resposta é `inadimplente`, uma classificação binária. Foi usada 
 - padronização das numéricas;
 - one-hot encoding das categóricas;
 - Regressão Logística.
+- Matplotlib e Seaborn foram utilizados para a Análise Exploratória e para a visualização dos resultados.
+- Não foi realizada otimização de hiperparâmetros: a Regressão Logística utilizou o valor padrão `C=1.0`; a comparação foi feita entre conjuntos de atributos e não por busca de `C`.
+
 
 Comparações:
 
@@ -65,6 +87,7 @@ A seleção é feita pela PR-AUC média em validação cruzada estratificada de 
 | M3 — sem estado + razão | 0,730 | 0,771 | 0,648 | 0,449 | 0,658 | 0,534 | 0,663 |
 
 O modelo selecionado pela PR-AUC média na validação cruzada foi o **M3**, com PR-AUC média de 0,654 e ROC-AUC média de 0,777. No teste, ele alcançou PR-AUC de 0,648 e ROC-AUC de 0,771.
+Em termos práticos, um recall de 0,449 significa que o modelo M3 captura quase metade dos reais inadimplentes. Uma precisão de 0,658 indica que, de todas as propostas alertadas como risco, o modelo acerta em cerca de 66% das vezes, reduzindo o risco de bloquear excessivamente bons pagadores. A decisão final ainda deve considerar o custo financeiro de falsos positivos e falsos negativos.
 
 ## Interpretação
 
