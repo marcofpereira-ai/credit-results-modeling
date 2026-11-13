@@ -1,0 +1,87 @@
+# Solução — Análise de Crédito
+
+## Objetivo
+
+Investigar fatores associados à inadimplência e avaliar uma **Regressão Logística** para apoiar a identificação de propostas de maior risco.
+
+Os dados são sintéticos e educacionais. O modelo não deve ser usado em decisões reais sem validação adicional.
+
+## Estrutura
+
+- `dataset.csv`: dados brutos fornecidos pelo desafio.
+- `tratamento_dados.py`: tratamento determinístico e engenharia da variável derivada.
+- `dataset_tratado.csv`: saída reproduzível do tratamento.
+- `analise_credito.ipynb`: análise exploratória, preparação, modelagem e avaliação.
+- `apresentacao.md`: roteiro para apresentação da análise.
+- `requirements.txt`: dependências Python.
+
+## Execução
+
+Na pasta `desafios/analise-credito`:
+
+```bash
+python -m pip install -r requirements.txt
+python tratamento_dados.py
+jupyter notebook analise_credito.ipynb
+```
+
+O notebook deve ser executado do início ao fim. Ele também recria `dataset_tratado.csv`.
+
+## Tratamento dos dados
+
+- Remove espaços extras em `estado`, `escolaridade` e `finalidade`.
+- Corrige 15 idades exatamente dez vezes maiores que uma idade plausível.
+- Marca 7 tempos de emprego acima de 30 anos como ausentes; a imputação ocorre somente no treino, dentro do pipeline.
+- Remove 19 duplicatas exatas adicionais.
+- Cria `razao_emprestimo_renda = valor_solicitado / renda_mensal`.
+
+Resultado: 4.981 propostas, 12 colunas e 27 estados padronizados.
+
+## Modelagem
+
+A variável resposta é `inadimplente`, uma classificação binária. Foi usada divisão estratificada 80/20, `random_state=42` e pipeline com:
+
+- imputação da mediana para numéricas;
+- padronização das numéricas;
+- one-hot encoding das categóricas;
+- Regressão Logística.
+
+Comparações:
+
+1. baseline que sempre prevê a classe majoritária;
+2. `M1`: variáveis originais;
+3. `M2`: variáveis originais + razão empréstimo/renda;
+4. `M3`: variáveis originais sem `estado` + razão empréstimo/renda.
+
+A seleção é feita pela PR-AUC média em validação cruzada estratificada de 5 partes no treino. O conjunto de teste é reservado para a estimativa final.
+
+## Resultados no teste
+
+| Modelo | Accuracy | ROC-AUC | PR-AUC | Recall | Precisão | F1 | Balanced accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Baseline | 0,656 | 0,500 | 0,344 | 0,000 | 0,000 | 0,000 | 0,500 |
+| M1 — originais | 0,727 | 0,760 | 0,633 | 0,449 | 0,650 | 0,531 | 0,661 |
+| M2 — originais + razão | 0,732 | 0,766 | 0,643 | 0,458 | 0,660 | 0,540 | 0,667 |
+| M3 — sem estado + razão | 0,730 | 0,771 | 0,648 | 0,449 | 0,658 | 0,534 | 0,663 |
+
+O modelo selecionado pela PR-AUC média na validação cruzada foi o **M3**, com PR-AUC média de 0,654 e ROC-AUC média de 0,777. No teste, ele alcançou PR-AUC de 0,648 e ROC-AUC de 0,771.
+
+## Interpretação
+
+As associações mais relevantes no M3 foram:
+
+- `razao_emprestimo_renda`: odds ratio aproximado de 1,716 por desvio-padrão;
+- `dividas_ativas`: odds ratio aproximado de 1,568 por desvio-padrão;
+- `score_credito`: odds ratio aproximado de 0,454 por desvio-padrão;
+- `renda_mensal`: odds ratio aproximado de 0,684 por desvio-padrão;
+- `tempo_emprego_anos`: odds ratio aproximado de 0,776 por desvio-padrão.
+
+Odds ratios são associações condicionais do modelo, não efeitos causais.
+
+## Limitações e próximos cuidados
+
+- Dados sintéticos, sem garantia de validade externa.
+- Ausência de dimensão temporal para avaliar estabilidade e drift.
+- Limiar 0,5 não incorpora custos reais de falso positivo e falso negativo.
+- Variáveis geográficas podem atuar como proxies; por isso `estado` foi comparado e não foi mantido no modelo selecionado.
+- Uso real exige validação temporal, fairness, governança, monitoramento e revisão humana.
