@@ -98,7 +98,19 @@
 
 ---
 
-## Slide 9 — Limitações
+## Slide 9 — Aplicação prática e política de crédito
+
+- Tradução do score do modelo M3 em ação comercial no arquivo `resultado_politica_credito.csv`.
+- Segmentação em três faixas: **Disponivel** (< 30% de risco), **Analise Manual** (30% a 60%) e **Indisponivel** (> 60%).
+- `valor_pre_aprovado` calculado com base na `renda_mensal`, no risco individual, no valor solicitado e nas dívidas ativas.
+- Simulação: **Disponivel:** 1.461 propostas (29,33%); **Analise Manual:** 1.986 (39,87%); **Indisponivel:** 1.534 (30,80%); total de **4.981 registros**.
+- Aprovação automática: **29,33%**; ticket médio pré-aprovado: **R$ 6.809,83**; volume financeiro pré-aprovado: **R$ 9.949.155,74**.
+
+**Speaker notes:** "O M3 deixa de ser apenas uma probabilidade e passa a orientar uma política operacional. Propostas abaixo de 30% de risco podem seguir para aprovação automática; a faixa intermediária exige análise humana; acima de 60% não há pré-aprovação. O limite combina renda, risco, dívidas ativas e o teto solicitado."
+
+---
+
+## Slide 10 — Limitações
 
 - Dados sintéticos — sem garantia de validade externa.
 - Sem histórico temporal — não avalia estabilidade/drift.
@@ -110,7 +122,7 @@
 
 ---
 
-## Slide 10 — Próximos Passos e Recomendações
+## Slide 11 — Próximos Passos e Recomendações
 
 - Usar o modelo como **apoio**, não decisão automática.
 - Definir custos de falso positivo (bom cliente recusado) e falso negativo (mau cliente aprovado).

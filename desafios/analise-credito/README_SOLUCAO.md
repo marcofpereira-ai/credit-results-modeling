@@ -28,6 +28,9 @@ Os dados são sintéticos e educacionais. O modelo não deve ser usado em decis�
 - `dataset.csv`: dados brutos fornecidos pelo desafio.
 - `tratamento_dados.py`: tratamento determinístico e engenharia da variável derivada.
 - `dataset_tratado.csv`: saída reproduzível do tratamento.
+- `resultado_politica_credito.csv`: saída final com escoragem de risco, status comercial e limite pré-aprovado.
+- `templates_comunicacao.md`: modelos dinâmicos de oferta (WhatsApp, E-mail e In-App) parametrizados para integração com CRM.
+- `workflow_n8n_ofertas.json`: workflow n8n importável para automatizar disparos de ofertas multicanal.
 - `analise_credito.ipynb`: análise exploratória, preparação, modelagem e avaliação.
 - `apresentacao.md`: roteiro para apresentação da análise.
 - `requirements.txt`: dependências Python.
@@ -147,6 +150,33 @@ As associações mais relevantes no M3 (com `class_weight='balanced'`) foram:
 - `finalidade_Outros`: OR ≈ 0.975 — outros ↓ risco vs referência
 
 > **Nota:** Odds ratios são associações condicionais do modelo, **não efeitos causais**. Variáveis numéricas são padronizadas (OR por 1 DP); categóricas comparam contra a categoria de referência omitida pelo OneHotEncoder.
+
+## Aplicação Prática (Motor de Decisão)
+
+O notebook ajusta o pipeline M3 na base tratada completa e gera `resultado_politica_credito.csv` sem alterar o `dataset_tratado.csv`. A coluna `probabilidade_inadimplencia` é a probabilidade estimada de inadimplência, arredondada para quatro casas.
+
+O JSON está pronto para importação direta no n8n e automatiza o envio multicanal das ofertas para clientes com status `Disponivel`.
+
+As faixas de `status_credito` são:
+
+- **Disponivel**: risco estimado abaixo de 30%; elegível para aprovação automática.
+- **Analise Manual**: risco entre 30% e 60%, inclusive; exige avaliação humana.
+- **Indisponivel**: risco acima de 60%; não libera valor pré-aprovado.
+
+Para propostas **Disponivel**, o limite é calculado por:
+
+`min(valor_solicitado, renda_mensal × 2,5 × (1 − probabilidade_inadimplencia) ÷ (1 + dividas_ativas))`
+
+Para as demais faixas, `valor_pre_aprovado` é `0,00`.
+
+### Simulação na base tratada
+
+- **Disponivel:** 1.461 propostas (29,33%).
+- **Analise Manual:** 1.986 propostas (39,87%).
+- **Indisponivel:** 1.534 propostas (30,80%).
+- **Ticket médio pré-aprovado:** R$ 6.809,83.
+- **Volume financeiro liberado com segurança:** R$ 9.949.155,74.
+
 
 ## Limitações e próximos cuidados
 
