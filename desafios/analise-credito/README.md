@@ -1,5 +1,42 @@
 # Desafio 1 - Análise de Crédito
 
+## 🚀 Execução Rápida
+
+```bash
+# 1. Clone e entre no diretório
+cd desafios/analise-credito
+
+# 2. Crie e ative ambiente virtual
+python -m venv venv
+# Windows PowerShell:
+venv\Scripts\Activate.ps1
+# Windows CMD:
+venv\Scripts\activate.bat
+# Linux/macOS:
+source venv/bin/activate
+
+# 3. Instale dependências
+pip install -r requirements.txt
+
+# 4. Execute tratamento de dados (gera dataset_tratado.csv)
+python tratamento_dados.py
+
+# 5. Abra o notebook
+jupyter notebook analise_credito.ipynb
+```
+
+> **Nota:** O notebook deve ser executado do início ao fim. Ele também recria `dataset_tratado.csv` internamente.
+
+---
+
+## 📖 Documentação Relacionada
+
+- **[Solução Documentada](README_SOLUCAO.md)** — Descrição técnica completa da solução implementada
+- **[Notebook de Análise](analise_credito.ipynb)** — Código executável com todas as etapas
+- **[Roteiro de Apresentação](apresentacao.md)** — Slides para apresentação oral
+
+---
+
 ## 🏦 Contexto
 
 Você faz parte de uma equipe de dados da **CredAIR**, uma financeira fictícia que oferece empréstimos pessoais.
@@ -14,7 +51,7 @@ Seu papel neste desafio é atuar como **cientista de dados**. A partir dos dados
 
 ## 📊 Dados disponíveis
 
-O arquivo `credito.csv` contém registros de propostas de empréstimo analisadas pela CredAIR.
+O arquivo `dataset.csv` contém registros de propostas de empréstimo analisadas pela CredAIR.
 
 Cada linha representa uma **proposta de crédito** e reúne informações sobre o perfil do solicitante, sua situação financeira e as características do empréstimo.
 

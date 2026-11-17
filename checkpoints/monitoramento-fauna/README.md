@@ -78,21 +78,21 @@ aves e anfíbios.
 
 Entre as espécies presentes no monitoramento estão:
 
-| Espécie           | Grupo    |
-|-------------------|----------|
-| Capivara          | Mamífero |
+| Espécie | Grupo |
+|---------|-------|
+| Capivara | Mamífero |
 | Cervo-do-pantanal | Mamífero |
-| Ema               | Ave      |
-| Lobo-guará        | Mamífero |
-| Onça-pintada      | Mamífero |
-| Perereca-verde    | Anfíbio  |
-| Quati             | Mamífero |
-| Rã-manteiga       | Anfíbio  |
-| Sapo-cururu       | Anfíbio  |
-| Seriema           | Ave      |
+| Ema | Ave |
+| Lobo-guará | Mamífero |
+| Onça-pintada | Mamífero |
+| Perereca-verde | Anfíbio |
+| Quati | Mamífero |
+| Rã-manteiga | Anfíbio |
+| Sapo-cururu | Anfíbio |
+| Seriema | Ave |
 | Tamanduá-bandeira | Mamífero |
-| Tatu-canastra     | Mamífero |
-| Veado-campeiro    | Mamífero |
+| Tatu-canastra | Mamífero |
+| Veado-campeiro | Mamífero |
 
 A frequência de registros varia entre as espécies ao longo do período monitorado.
 
@@ -102,22 +102,22 @@ O arquivo `dataset.json` contém **5.000 registros**.
 
 Cada registro possui as seguintes informações:
 
-| Coluna             | Descrição                                           |
-|--------------------|-----------------------------------------------------|
-| `id_registro`      | Identificação do registro                           |
-| `id_camera`        | Identificação da câmera que realizou o registro     |
-| `data_hora_inicio` | Data e hora em que o registro ocorreu               |
-| `duracao_segundos` | Duração do registro                                 |
-| `especie`          | Espécie registrada                                  |
-| `grupo`            | Grupo faunístico ao qual a espécie pertence         |
-| `individuos`       | Quantidade de indivíduos registrados                |
-| `temperatura_c`    | Temperatura registrada pelo sensor, em °C           |
-| `umidade_pct`      | Umidade relativa do ar registrada pelo sensor, em % |
+| Coluna | Descrição |
+|--------|-----------|
+| `id_registro` | Identificação do registro |
+| `id_camera` | Identificação da câmera que realizou o registro |
+| `data_hora_inicio` | Data e hora em que o registro ocorreu |
+| `duracao_segundos` | Duração do registro |
+| `especie` | Espécie registrada |
+| `grupo` | Grupo faunístico ao qual a espécie pertence |
+| `individuos` | Quantidade de indivíduos registrados |
+| `temperatura_c` | Temperatura registrada pelo sensor, em °C |
+| `umidade_pct` | Umidade relativa do ar registrada pelo sensor, em % |
 
 Os dados representam os **registros brutos recebidos pela equipe**. Portanto, algumas
 variáveis podem precisar de tratamento antes de serem utilizadas nas análises.
 
-# 🎯 Desafios
+## 🎯 Desafios
 
 A equipe de pesquisadores precisa responder a diferentes questões a partir dos registros
 coletados.
@@ -128,7 +128,7 @@ apresente evidências que sustentem sua conclusão.
 Não existe uma única forma correta de realizar as análises. Suas escolhas devem ser
 justificadas conforme o problema.
 
-## Desafio 1 - Animais solitários ou em grupo?
+### Desafio 1 - Animais solitários ou em grupo?
 
 Durante o monitoramento, os pesquisadores querem entender como a **capivara** costuma
 ser registrada pelas câmeras.
@@ -136,18 +136,18 @@ ser registrada pelas câmeras.
 **Pergunta:**
 
 > **Qual é o número médio de indivíduos por registro de capivara? A maioria dos
-registros envolve indivíduos isolados ou grupos?**
+> registros envolve indivíduos isolados ou grupos?**
 
-## Desafio 2 - Quando a fauna está mais ativa?
+### Desafio 2 - Quando a fauna está mais ativa?
 
 A equipe quer entender como os horários dos registros variam ao longo do dia.
 
 **Pergunta:**
 
 > **Em quais períodos do dia há mais registros de animais? Escolha três espécies e
-compare seus horários de maior ocorrência.**
+> compare seus horários de maior ocorrência.**
 
-## Desafio 3 - Vale a pena procurar anfíbios em períodos mais úmidos?
+### Desafio 3 - Vale a pena procurar anfíbios em períodos mais úmidos?
 
 A equipe de campo está planejando uma rotina de monitoramento de anfíbios e quer saber
 se a umidade pode ajudar a definir os melhores momentos para realizar esse trabalho.
@@ -155,10 +155,10 @@ se a umidade pode ajudar a definir os melhores momentos para realizar esse traba
 **Pergunta:**
 
 > **Os anfíbios são registrados com maior frequência quando a umidade é mais alta?
-Compare a quantidade de registros em diferentes níveis de umidade e apresente sua
-conclusão.**
+> Compare a quantidade de registros em diferentes níveis de umidade e apresente sua
+> conclusão.**
 
-## Desafio 4 - Onde concentrar o monitoramento?
+### Desafio 4 - Onde concentrar o monitoramento?
 
 A equipe precisa decidir onde concentrar seus esforços no próximo período de
 monitoramento. Para isso, quer identificar quais câmeras apresentam maior atividade e
@@ -167,9 +167,9 @@ variedade de espécies.
 **Pergunta:**
 
 > **Quais câmeras apresentam maior quantidade de registros e maior variedade de
-espécies? Essas câmeras estão concentradas em alguma das três áreas do parque?**
+> espécies? Essas câmeras estão concentradas em alguma das três áreas do parque?**
 
-## Desafio 5 - Onde procurar a onça-pintada?
+### Desafio 5 - Onde procurar a onça-pintada?
 
 Um grupo de biólogos pretende aumentar as chances de registrar uma onça-pintada no
 próximo período de monitoramento.
@@ -177,13 +177,13 @@ próximo período de monitoramento.
 **Pergunta:**
 
 > **Com base nos registros deste mês, em quais câmeras, áreas e períodos do dia você
-recomendaria concentrar o próximo monitoramento?**
+> recomendaria concentrar o próximo monitoramento?**
 
-# ⭐ Desafios bônus
+## ⭐ Desafios bônus
 
 Os desafios abaixo são opcionais e podem ser utilizados para aprofundar a investigação.
 
-## Bônus 1 - Preparando os dados
+### Bônus 1 - Preparando os dados
 
 Antes de iniciar as análises, a equipe precisa garantir que os dados estejam adequados
 para serem utilizados.
@@ -191,10 +191,10 @@ para serem utilizados.
 **Pergunta:**
 
 > **Faça uma análise inicial do dataset, identifique problemas ou inconsistências que
-possam afetar suas análises e trate os dados da forma que considerar mais adequada.
-Explique brevemente as decisões tomadas.**
+> possam afetar suas análises e trate os dados da forma que considerar mais adequada.
+> Explique brevemente as decisões tomadas.**
 
-## Bônus 2 - Quanto tempo duram os registros?
+### Bônus 2 - Quanto tempo duram os registros?
 
 A equipe quer entender se a duração dos eventos registrados varia entre as espécies e se
 esse comportamento pode ajudar na interpretação dos registros.
@@ -202,9 +202,9 @@ esse comportamento pode ajudar na interpretação dos registros.
 **Pergunta:**
 
 > **Quais espécies apresentam os registros mais longos e mais curtos? Como a duração dos
-registros se distribui entre as espécies e o que essa diferença pode indicar?**
+> registros se distribui entre as espécies e o que essa diferença pode indicar?**
 
-## Bônus 3 - O comportamento do lobo-guará
+### Bônus 3 - O comportamento do lobo-guará
 
 A equipe quer conhecer melhor o padrão de ocorrência do lobo-guará durante o período
 monitorado.
@@ -212,9 +212,9 @@ monitorado.
 **Pergunta:**
 
 > **Em quais horários e em quais câmeras o lobo-guará foi mais registrado? Existe algum
-padrão que se destaque nesses registros?**
+> padrão que se destaque nesses registros?**
 
-## Bônus 4 - Sua própria investigação
+### Bônus 4 - Sua própria investigação
 
 Até aqui, você trabalhou com perguntas propostas pela equipe. Agora, pense em algo que
 você gostaria de investigar usando os dados.
@@ -222,19 +222,19 @@ você gostaria de investigar usando os dados.
 **Pergunta:**
 
 > **Crie uma pergunta que possa ser respondida a partir do dataset e faça uma análise
-para chegar a uma conclusão.**
+> para chegar a uma conclusão.**
 
 A ideia é explorar um padrão ou situação diferente dos desafios anteriores.
 
 Por exemplo:
 
 > **Aves, mamíferos e anfíbios possuem picos de atividade em horários claramente
-distintos?**
+> distintos?**
 
 Não precisa ser uma pergunta complexa. O objetivo é **pensar em uma situação, formular
 uma pergunta e usar os dados para tentar respondê-la**.
 
-# 💻 Prática de Git e GitHub
+## 💻 Prática de Git e GitHub
 
 A prática de **Git e GitHub faz parte deste checkpoint**. A ideia é utilizar o exercício
 para colocar em prática os conceitos estudados durante a trilha.
